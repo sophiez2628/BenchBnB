@@ -5,7 +5,6 @@ var BenchIndex = React.createClass({
 
   componentDidMount: function() {
     BenchStore.addChangeListener(this.onChange);
-    ApiUtil.fetchBenches();
   },
 
   onChange: function() {
@@ -17,7 +16,7 @@ var BenchIndex = React.createClass({
       <div>
         {
           this.state.benches.map(function(bench) {
-            return (<li>{bench}</li>);
+            return (<li key={bench.id}>{bench}</li>);
           })
         }
       </div>

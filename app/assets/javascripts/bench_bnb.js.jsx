@@ -1,3 +1,3 @@
 $(document).ready(function() {
-  React.render(<BenchIndex />, document.getElementById("content"));
+  React.render(<Search />, document.getElementById("content"));
 });

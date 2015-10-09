@@ -11,6 +11,6 @@ ApiUtil = {
         //passes the data to an action object
         //thus, the source of the action is the ApiUtil
       }
-    })
+    });
   }
-}
+};

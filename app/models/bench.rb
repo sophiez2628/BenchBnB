@@ -11,4 +11,7 @@
 #
 
 class Bench < ActiveRecord::Base
+  def self.in_bounds(bounds)
+
+  end
 end
