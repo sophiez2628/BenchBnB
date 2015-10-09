@@ -7,11 +7,19 @@ var Map = React.createClass({
     };
     this.mymap = new google.maps.Map(map, mapOptions);
     BenchStore.addChangeListener(this.onChange);
-    this.listenForMove();
+    //the idle event is fired when the map becomes idle after panning or zooming
+    google.maps.event.addListener(this.mymap, 'idle', this._idleCallBack);
   },
 
-  listenForMove: function() {
-    ApiUtil.fetchBenches();
+  _idleCallBack: function() {
+    var latLngBounds = this.mymap.getBounds();
+    var northEast = latLngBounds.getNorthEast();
+    var southWest = latLngBounds.getSouthWest();
+    var bounds = { "bounds": {
+                  "northEast": {"lat": northEast.J.toString(), "lng": northEast.M.toString()},
+                  "southWest": {"lat": southWest.J.toString(), "lng": southWest.M.toString()} }
+                };
+    ApiUtil.fetchBenches(bounds);
   },
 
   onChange: function() {

@@ -29,6 +29,7 @@
     dispatcherID: AppDispatcher.register(function(action){
       if(action.actionType === BenchConstants.BENCHES_RECEIVED){
           resetBenches(action.benches);
+          //should be called every time the benches are being 'reset'
       }
     })
   });
