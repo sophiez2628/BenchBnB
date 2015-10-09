@@ -5,12 +5,25 @@
   var _benches = [];
   var resetBenches = function(benches){
     _benches = benches;
+    BenchStore.onChange();
   };
 
   root.BenchStore = $.extend({}, EventEmitter.prototype, {
     all: function(){
       //return a shallow copy so consumer cannot mutate original
       return _benches.slice(0);
+    },
+    //functions for subscribing (and unsubscribing) to this event
+    //in Bench Store
+    addChangeListener: function(callback){
+      this.on(CHANGE_EVENT, callback);
+    },
+    removeChangeListener: function(callback){
+      this.removeListener(CHANGE_EVENT, callback);
+    },
+
+    onChange: function() {
+      this.emit(CHANGE_EVENT);
     },
     //this ensures that the store is listening to the dispatcher
     dispatcherID: AppDispatcher.register(function(action){
