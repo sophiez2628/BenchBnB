@@ -24,12 +24,19 @@ var Map = React.createClass({
 
   onChange: function() {
     //create markers for every bench in array
+    this.markers = this.markers || [];
+    while (this.markers.length) {
+      var popped = this.markers.pop().setMap(null);
+      popped = null;
+    }
+    this.markers = [];
     var benches = BenchStore.all();
     benches.forEach(function(bench) {
       var marker = new google.maps.Marker({
         position: {lat: bench.lat, lng: bench.lng },
         title: bench.description
       });
+      this.markers.push(marker);
       marker.setMap(this.mymap);
     }.bind(this));
   },
