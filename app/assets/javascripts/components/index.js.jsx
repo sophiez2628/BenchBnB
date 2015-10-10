@@ -14,11 +14,13 @@ var BenchIndex = React.createClass({
   render: function() {
     return (
       <div>
+        <ul>
         {
           this.state.benches.map(function(bench) {
-            return (<li key={bench.id}>{bench}</li>);
+            return (<BenchListItem bench={bench} />);
           })
         }
+        </ul>
       </div>
     );
   }
