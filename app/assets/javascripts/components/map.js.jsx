@@ -21,6 +21,7 @@ var Map = React.createClass({
                   "northEast": {"lat": northEast.J.toString(), "lng": northEast.M.toString()},
                   "southWest": {"lat": southWest.J.toString(), "lng": southWest.M.toString()} }
                 };
+    FilterActions.updateMapBounds(bounds);
     ApiUtil.fetchBenches(bounds);
   },
 

@@ -11,7 +11,7 @@
   var addBench = function(bench){
     _benches.push(bench);
     BenchStore.onChange();
-  }
+  };
 
   root.BenchStore = $.extend({}, EventEmitter.prototype, {
     all: function(){

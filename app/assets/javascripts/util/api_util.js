@@ -1,12 +1,12 @@
 ApiUtil = {
-  fetchBenches: function(bounds){
+  fetchBenches: function(params){
     //make an api call using AJAX in here
     $.ajax({
       url: '/api/bench',
       type: 'GET',
       data: bounds,
       dataType: 'json',
-      success: function(benches) {
+      success: function(params) {
         ApiActions.receiveAll(benches);
         //ajax get request gets all of the bench objects
         //passes the data to an action object

@@ -1,0 +1,5 @@
+FilterConstants = {
+  UPDATE_MIN: "UPDATE_MIN",
+  UPDATE_MAX: "UPDATE_MAX",
+  UPDATE_BOUNDS: "UPDATE_BOUNDS"
+};
