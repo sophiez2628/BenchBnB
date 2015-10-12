@@ -1,0 +1,27 @@
+#/
+
+Router#render =>
+
+return <App><IndexRoute component={Search}/></App>
+
+IndexRoute#render =>
+
+return <Search />
+
+
+=>
+
+<App><Search /></App>
+
+=>
+
+<div>
+  <header><h1>Bench BnB</h1></header>
+  <Search />
+</div>
+
+
+
+/benches/new
+
+/users/benchs/new

@@ -13,5 +13,18 @@ ApiUtil = {
         //thus, the source of the action is the ApiUtil
       }
     });
+  },
+
+    createBench: function(bench){
+      $.ajax({
+        url: '/api/bench',
+        type: 'POST',
+        data: bench,
+        dataType: 'json',
+        success: function(bench) {
+          ApiActions.receiveNewBench(bench);
+        }
+    });
   }
+
 };

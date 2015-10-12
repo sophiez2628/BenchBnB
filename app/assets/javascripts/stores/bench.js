@@ -8,6 +8,11 @@
     BenchStore.onChange();
   };
 
+  var addBench = function(bench){
+    _benches.push(bench);
+    BenchStore.onChange();
+  }
+
   root.BenchStore = $.extend({}, EventEmitter.prototype, {
     all: function(){
       //return a shallow copy so consumer cannot mutate original
@@ -28,8 +33,10 @@
     //this ensures that the store is listening to the dispatcher
     dispatcherID: AppDispatcher.register(function(action){
       if(action.actionType === BenchConstants.BENCHES_RECEIVED){
-          resetBenches(action.benches);
+        resetBenches(action.benches);
           //should be called every time the benches are being 'reset'
+      } else if(action.actionType === BenchConstants.NEW_BENCH){
+        addBench(action.bench);
       }
     })
   });

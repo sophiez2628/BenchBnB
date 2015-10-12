@@ -9,6 +9,8 @@ var Map = React.createClass({
     BenchStore.addChangeListener(this.onChange);
     //the idle event is fired when the map becomes idle after panning or zooming
     google.maps.event.addListener(this.mymap, 'idle', this._idleCallBack);
+    //adds an event listener onto the map
+    google.maps.event.addListener(this.mymap, 'click', this.onClickMapHandler)
   },
 
   _idleCallBack: function() {
@@ -39,6 +41,13 @@ var Map = React.createClass({
       this.markers.push(marker);
       marker.setMap(this.mymap);
     }.bind(this));
+  },
+
+  onClickMapHandler: function(e) {
+    var lat = e.latLng.J;
+    var lng = e.latLng.M;
+    var coords = {lat: lat, lng: lng};
+    this.props.handleMapClick(coords);
   },
 
   render: function() {
