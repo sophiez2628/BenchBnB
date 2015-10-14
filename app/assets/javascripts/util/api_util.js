@@ -4,9 +4,9 @@ ApiUtil = {
     $.ajax({
       url: '/api/bench',
       type: 'GET',
-      data: bounds,
+      data: params,
       dataType: 'json',
-      success: function(params) {
+      success: function(benches) {
         ApiActions.receiveAll(benches);
         //ajax get request gets all of the bench objects
         //passes the data to an action object

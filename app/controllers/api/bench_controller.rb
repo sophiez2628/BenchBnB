@@ -1,6 +1,18 @@
 class Api::BenchController < ApplicationController
   def index
     benches = Bench.in_bounds(params[:bounds])
+
+    if !params[:min].nil?
+      benches = benches.select { |bench| bench.seating >= params[:min].to_i }
+    end
+
+    if !params[:max].nil?
+      puts "hello"
+      benches = benches.select { |bench| bench.seating <= params[:max].to_i }
+    end
+
+
+
     render json: benches
   end
 

@@ -34,5 +34,6 @@ class Bench < ActiveRecord::Base
     end
 
     benches = Bench.where(lat: min_lat..max_lat, lng: min_lng..max_lng)
+
   end
 end

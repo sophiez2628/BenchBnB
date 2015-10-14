@@ -11,7 +11,7 @@ FilterActions = {
       actionType: FilterConstants.UPDATE_MAX,
       max: max
     });
-  }
+  },
 
   updateMapBounds: function(bounds) {
     AppDispatcher.dispatch({

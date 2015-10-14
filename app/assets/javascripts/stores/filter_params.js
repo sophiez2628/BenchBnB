@@ -11,13 +11,17 @@
   var _filtered_benches = [];
 
   var resetMinParam = function(min) {
-    filterParams.min = newFilterParams.min;
-    this.onChange();
+    filterParams.min = min;
+    FilterParamsStore.onChange();
   };
 
   var resetMaxParam = function(max) {
-    filterParams.max = newFilterParams.max;
-    this.onChange();
+    filterParams.max = max;
+    FilterParamsStore.onChange();
+  };
+
+  var resetMapBounds = function(bounds) {
+    filterParams.bounds = bounds.bounds;
   };
 
   root.FilterParamsStore = $.extend({}, EventEmitter.prototype, {
@@ -43,6 +47,8 @@
           //should be called every time the filters are being reset
       } else if(action.actionType === FilterConstants.UPDATE_MAX) {
         resetMaxParam(action.max);
+      } else if(action.actionType === FilterConstants.UPDATE_BOUNDS) {
+        resetMapBounds(action.bounds);
       }
     })
 

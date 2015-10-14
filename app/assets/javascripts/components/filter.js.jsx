@@ -2,11 +2,11 @@ var Filter = React.createClass({
   _onChange: function(e) {
     switch (e.currentTarget.name) {
       case "minSeats":
-        var min = parseInt(e.currentTarget.minSeats);
+        var min = e.currentTarget.value;
         FilterActions.updateMin(min);
         break;
       case "maxSeats":
-        var max = parseInt(e.currentTarget.maxSeats);
+        var max = e.currentTarget.value;
         FilterActions.updateMax(max);
         break;
     }
